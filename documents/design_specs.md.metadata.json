@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_OTHER",
+  "summary": "Comprehensive design specifications including system architecture diagrams, data flow sequences, wireframes for admin and public pages, database ERD, API design for server actions, UI component specifications, security design with RLS policies, social sharing metadata design, and Tailwind styling guidelines.",
+  "updatedAt": "2026-02-13T09:21:00.144746400Z"
+}

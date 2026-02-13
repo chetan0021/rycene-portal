@@ -1,0 +1,37 @@
+# Rycene Credential Management System - Task Breakdown
+
+## Phase 1: Project Setup
+- [ ] Initialize Next.js project with App Router
+- [ ] Configure Tailwind CSS
+- [ ] Install required dependencies (Supabase, Lucide-React, QR code library)
+- [ ] Set up environment variables template
+
+## Phase 2: Database & Supabase Configuration
+- [ ] Create Supabase project configuration
+- [ ] Define database schema SQL for certificates table
+- [ ] Set up Supabase Storage bucket for PDFs
+- [ ] Configure Row Level Security (RLS) policies
+- [ ] Create Supabase client utilities
+
+## Phase 3: Admin Dashboard (/admin)
+- [ ] Create admin page layout
+- [ ] Build "Add Student" form component
+- [ ] Implement data table to display all certificates
+- [ ] Add QR code generation functionality
+- [ ] Build PDF upload component with Supabase Storage integration
+- [ ] Create "Send Mail" placeholder button
+- [ ] Implement server actions for CRUD operations
+
+## Phase 4: Public Verification Page (/v/[id])
+- [ ] Create dynamic route for certificate verification
+- [ ] Implement server-side data fetching by UUID
+- [ ] Build PDF viewer with iframe
+- [ ] Add download button
+- [ ] Ensure complete isolation from admin routes
+
+## Phase 5: Testing & Documentation
+- [ ] Test admin CRUD operations
+- [ ] Test QR code generation and scanning
+- [ ] Test PDF upload and retrieval
+- [ ] Verify public page isolation
+- [ ] Create README with setup instructions

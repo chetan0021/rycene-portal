@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_OTHER",
+  "summary": "Critical issue documentation explaining the Windows path problem with special characters ('&' in 'R&D Chetan V'), providing three solution options: moving project to a path without special characters (recommended), using WSL2, or using npx commands directly. Includes step-by-step instructions for each approach.",
+  "updatedAt": "2026-02-13T09:39:33.909522900Z"
+}

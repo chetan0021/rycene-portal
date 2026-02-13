@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_OTHER",
+  "summary": "Comprehensive requirements document detailing functional requirements (student management, QR generation, PDF handling, verification, social sharing), non-functional requirements (security, performance, usability), database schema, and technology constraints for the Rycene credential management system.",
+  "updatedAt": "2026-02-13T09:21:00.079864300Z"
+}

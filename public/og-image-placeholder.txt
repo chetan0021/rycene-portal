@@ -1,0 +1,13 @@
+# Placeholder for Open Graph Image
+
+This is a placeholder file. To create a custom OG image:
+
+1. Create a 1200x630px image with your branding
+2. Replace this file with your image named `og-image.png`
+3. The image will be used for social media previews when sharing certificate links
+
+Recommended content:
+- Rycene VLSI Technologies logo/branding
+- "Certificate Verification System" text
+- Professional gradient background
+- Graduation cap or certificate icon

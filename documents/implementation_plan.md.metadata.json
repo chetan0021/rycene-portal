@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Comprehensive implementation plan for the Rycene credential management system, detailing the Next.js app structure, Supabase database schema, admin dashboard with CRUD operations, public verification page, and verification strategy including manual testing steps.",
+  "updatedAt": "2026-02-13T09:13:11.234080300Z"
+}
