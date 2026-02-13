@@ -4,6 +4,7 @@ import { uploadCertificatePDF, deleteCertificate, sendCertificateEmail } from "@
 import { QRCodeSVG } from "qrcode.react";
 import { Download, QrCode, Upload, Mail, Trash2 } from "lucide-react";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 type Certificate = {
     id: string;
@@ -23,6 +24,7 @@ export default function TableActions({ certificate }: { certificate: Certificate
     const [uploadMessage, setUploadMessage] = useState<string | null>(null);
     const [isSendingEmail, setIsSendingEmail] = useState(false);
     const [emailMessage, setEmailMessage] = useState<string | null>(null);
+    const router = useRouter();
 
     const verificationUrl = `${typeof window !== "undefined" ? window.location.origin : ""}/v/${certificate.id}`;
 
@@ -75,7 +77,10 @@ export default function TableActions({ certificate }: { certificate: Certificate
 
         if (result.success) {
             setUploadMessage("PDF uploaded successfully!");
-            setTimeout(() => setUploadMessage(null), 3000);
+            setTimeout(() => {
+                setUploadMessage(null);
+                router.refresh(); // Refresh to show updated status
+            }, 1500);
         } else {
             setUploadMessage(result.error || "Upload failed");
         }
@@ -101,7 +106,10 @@ export default function TableActions({ certificate }: { certificate: Certificate
 
         if (result.success) {
             setEmailMessage("Email sent successfully!");
-            setTimeout(() => setEmailMessage(null), 3000);
+            setTimeout(() => {
+                setEmailMessage(null);
+                router.refresh(); // Refresh to show updated status
+            }, 1500);
         } else {
             setEmailMessage(result.error || "Failed to send email");
         }
@@ -120,11 +128,12 @@ export default function TableActions({ certificate }: { certificate: Certificate
             </button>
 
             <label
-                className={`p-2.5 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all cursor-pointer shadow-md hover:shadow-lg active:scale-95 ${isUploading ? "opacity-50 cursor-not-allowed" : ""
+                className={`px-4 py-2.5 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-all cursor-pointer shadow-lg hover:shadow-xl active:scale-95 flex items-center gap-2 font-bold ${isUploading ? "opacity-50 cursor-not-allowed" : ""
                     }`}
-                title="Upload PDF"
+                title="Upload PDF Certificate"
             >
-                <Upload size={18} />
+                <Upload size={20} />
+                <span className="hidden sm:inline">Upload PDF</span>
                 <input
                     type="file"
                     accept=".pdf"

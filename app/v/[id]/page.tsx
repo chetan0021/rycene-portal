@@ -44,7 +44,7 @@ export default async function VerificationPage({ params }: Props) {
     const verificationUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/v/${certificate.id}`;
 
     return (
-        <div className="min-h-screen bg-white py-12 px-4">
+        <div className="min-h-screen bg-black py-12 px-4">
             <div className="max-w-6xl mx-auto">
                 {/* Brand Header */}
                 <div className="flex flex-col items-center mb-12">
@@ -53,14 +53,14 @@ export default async function VerificationPage({ params }: Props) {
                             src="/Logo.png"
                             alt="Rycene Logo"
                             fill
-                            className="object-contain"
+                            className="object-contain brightness-0 invert"
                             priority
                         />
                     </div>
-                    <h2 className="text-2xl font-bold text-black mb-2">Rycene VLSI Technologies</h2>
-                    <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 border border-gray-300 rounded-full">
-                        <CheckCircle className="text-black" size={20} />
-                        <span className="text-black text-sm font-bold uppercase tracking-wider">
+                    <h2 className="text-2xl font-bold text-white mb-2">Rycene VLSI Technologies</h2>
+                    <div className="flex items-center gap-2 px-4 py-2 bg-gray-900 border border-gray-700 rounded-full">
+                        <CheckCircle className="text-white" size={20} />
+                        <span className="text-white text-sm font-bold uppercase tracking-wider">
                             ✓ Verified Credential
                         </span>
                     </div>
@@ -69,47 +69,47 @@ export default async function VerificationPage({ params }: Props) {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Left Column - Details */}
                     <div className="lg:col-span-1 space-y-6">
-                        <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-                            <div className="bg-black px-6 py-4">
-                                <h2 className="text-sm font-bold text-white uppercase tracking-widest">
+                        <div className="bg-gray-900 rounded-xl border border-gray-700 overflow-hidden">
+                            <div className="bg-white px-6 py-4">
+                                <h2 className="text-sm font-bold text-black uppercase tracking-widest">
                                     Recipient Details
                                 </h2>
                             </div>
                             <div className="p-6 space-y-5">
                                 <div className="flex items-start gap-4">
-                                    <div className="p-2 bg-gray-100 rounded-lg">
-                                        <User className="text-black" size={18} />
+                                    <div className="p-2 bg-gray-800 rounded-lg">
+                                        <User className="text-white" size={18} />
                                     </div>
                                     <div>
-                                        <p className="text-xs font-semibold text-gray-600 uppercase tracking-wider">Student Name</p>
-                                        <p className="text-gray-900 font-bold leading-tight">{certificate.student_name}</p>
+                                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Student Name</p>
+                                        <p className="text-white font-bold leading-tight">{certificate.student_name}</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-4">
-                                    <div className="p-2 bg-gray-100 rounded-lg">
-                                        <Award className="text-black" size={18} />
+                                    <div className="p-2 bg-gray-800 rounded-lg">
+                                        <Award className="text-white" size={18} />
                                     </div>
                                     <div>
-                                        <p className="text-xs font-semibold text-gray-600 uppercase tracking-wider">Course</p>
-                                        <p className="text-gray-900 font-bold leading-tight">{certificate.course_name}</p>
+                                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Course</p>
+                                        <p className="text-white font-bold leading-tight">{certificate.course_name}</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-4">
-                                    <div className="p-2 bg-gray-100 rounded-lg">
-                                        <Calendar className="text-black" size={18} />
+                                    <div className="p-2 bg-gray-800 rounded-lg">
+                                        <Calendar className="text-white" size={18} />
                                     </div>
                                     <div>
-                                        <p className="text-xs font-semibold text-gray-600 uppercase tracking-wider">Duration</p>
-                                        <p className="text-gray-900 font-medium leading-tight">{certificate.duration}</p>
+                                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Duration</p>
+                                        <p className="text-white font-medium leading-tight">{certificate.duration}</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-4">
-                                    <div className="p-2 bg-gray-100 rounded-lg">
-                                        <Calendar className="text-black" size={18} />
+                                    <div className="p-2 bg-gray-800 rounded-lg">
+                                        <Calendar className="text-white" size={18} />
                                     </div>
                                     <div>
-                                        <p className="text-xs font-semibold text-gray-600 uppercase tracking-wider">Issue Date</p>
-                                        <p className="text-gray-900 font-medium leading-tight">
+                                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Issue Date</p>
+                                        <p className="text-white font-medium leading-tight">
                                             {new Date(certificate.created_at).toLocaleDateString("en-US", {
                                                 year: "numeric",
                                                 month: "long",
@@ -119,12 +119,12 @@ export default async function VerificationPage({ params }: Props) {
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-4">
-                                    <div className="p-2 bg-gray-100 rounded-lg">
-                                        <Hash className="text-black" size={18} />
+                                    <div className="p-2 bg-gray-800 rounded-lg">
+                                        <Hash className="text-white" size={18} />
                                     </div>
                                     <div>
-                                        <p className="text-xs font-semibold text-gray-600 uppercase tracking-wider">Serial Number</p>
-                                        <p className="text-gray-600 font-mono text-xs">{certificate.serial_number}</p>
+                                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Serial Number</p>
+                                        <p className="text-gray-400 font-mono text-xs">{certificate.serial_number}</p>
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +137,7 @@ export default async function VerificationPage({ params }: Props) {
                                 download
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center justify-center gap-3 w-full py-4 bg-black text-white rounded-xl font-bold hover:bg-gray-900 transition-all active:scale-[0.98]"
+                                className="flex items-center justify-center gap-3 w-full py-4 bg-white text-black rounded-xl font-bold hover:bg-gray-100 transition-all active:scale-[0.98] border-2 border-white"
                             >
                                 <Download size={20} />
                                 Download Certificate

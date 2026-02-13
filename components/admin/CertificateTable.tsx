@@ -1,4 +1,5 @@
 import TableActions from "./TableActions";
+import { CheckCircle2, Clock, Mail, FileText } from "lucide-react";
 
 type Certificate = {
     id: string;
@@ -43,10 +44,10 @@ export default function CertificateTable({ certificates }: { certificates: Certi
                                 Duration
                             </th>
                             <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                PDF
+                                PDF Status
                             </th>
                             <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Mailed
+                                Email Status
                             </th>
                             <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Actions
@@ -59,7 +60,7 @@ export default function CertificateTable({ certificates }: { certificates: Certi
                                 <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
                                     {cert.serial_number}
                                 </td>
-                                <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900">
+                                <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900 font-medium">
                                     {cert.student_name}
                                 </td>
                                 <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-600">
@@ -73,22 +74,26 @@ export default function CertificateTable({ certificates }: { certificates: Certi
                                 </td>
                                 <td className="px-4 py-3 whitespace-nowrap text-sm">
                                     {cert.pdf_url ? (
-                                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 border border-green-200">
+                                            <CheckCircle2 size={14} />
                                             Uploaded
                                         </span>
                                     ) : (
-                                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-700 border border-orange-200">
+                                            <Clock size={14} />
                                             Pending
                                         </span>
                                     )}
                                 </td>
                                 <td className="px-4 py-3 whitespace-nowrap text-sm">
                                     {cert.is_mailed ? (
-                                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800 border border-blue-200">
+                                            <Mail size={14} />
                                             Sent
                                         </span>
                                     ) : (
-                                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-700 border border-orange-200">
+                                            <Clock size={14} />
                                             Pending
                                         </span>
                                     )}
