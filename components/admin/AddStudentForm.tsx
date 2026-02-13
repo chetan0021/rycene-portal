@@ -1,14 +1,14 @@
 "use client";
 
 import { addStudent } from "@/lib/actions/certificates";
-import { useState, useRef } from "react";
+import { useState, useRef, type FormEvent } from "react";
 
 export default function AddStudentForm() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
     const formRef = useRef<HTMLFormElement>(null);
 
-    async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    async function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
         setIsSubmitting(true);
         setMessage(null);

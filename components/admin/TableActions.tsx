@@ -3,7 +3,7 @@
 import { uploadCertificatePDF, deleteCertificate, sendCertificateEmail } from "@/lib/actions/certificates";
 import { QRCodeSVG } from "qrcode.react";
 import { Download, QrCode, Upload, Mail, Trash2 } from "lucide-react";
-import { useState } from "react";
+import { useState, type ChangeEvent } from "react";
 import { useRouter } from "next/navigation";
 
 type Certificate = {
@@ -56,7 +56,7 @@ export default function TableActions({ certificate }: { certificate: Certificate
         img.src = "data:image/svg+xml;base64," + btoa(svgData);
     }
 
-    async function handleUploadPDF(e: React.ChangeEvent<HTMLInputElement>) {
+    async function handleUploadPDF(e: ChangeEvent<HTMLInputElement>) {
         const file = e.target.files?.[0];
         if (!file) return;
 
