@@ -1,4 +1,6 @@
 "use server";
+// Trigger Vercel build
+
 
 import { createServerClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
@@ -133,6 +135,8 @@ export async function sendCertificateEmail(certificateId: string) {
                 studentName: certificate.student_name,
                 courseName: certificate.course_name,
                 verificationUrl: verificationUrl,
+                duration: certificate.duration,
+                serialNumber: certificate.serial_number,
             })
         );
 
