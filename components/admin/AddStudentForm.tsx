@@ -32,6 +32,20 @@ export default function AddStudentForm() {
 
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
                 <div>
+                    <label htmlFor="serial_number" className="block text-sm font-semibold text-gray-700 mb-1">
+                        Serial Number / Certificate ID
+                    </label>
+                    <input
+                        type="text"
+                        id="serial_number"
+                        name="serial_number"
+                        required
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-mono"
+                        placeholder="RYC-2024-001"
+                    />
+                </div>
+
+                <div>
                     <label htmlFor="student_name" className="block text-sm font-semibold text-gray-700 mb-1">
                         Student Name
                     </label>
