@@ -25,7 +25,7 @@ export default function AdminHeader() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     <div className="flex items-center gap-4">
-                        <div className="relative w-32 h-10">
+                        <div className="relative w-10 h-10 sm:w-32 sm:h-10">
                             <Image
                                 src="/Logo.png"
                                 alt="Rycene Logo"
@@ -34,7 +34,10 @@ export default function AdminHeader() {
                                 priority
                             />
                         </div>
-                        <h1 className="text-xl font-bold text-gray-900">Admin Dashboard</h1>
+                        <div className="hidden sm:block">
+                            <h1 className="text-lg font-bold text-gray-900 leading-tight">Rycene VLSI Technologies</h1>
+                            <p className="text-xs text-gray-500">Admin Dashboard</p>
+                        </div>
                     </div>
                     <div className="flex items-center gap-3">
                         <button
