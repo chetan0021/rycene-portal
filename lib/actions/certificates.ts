@@ -135,7 +135,8 @@ export async function sendCertificateEmail(certificateId: string) {
             return { success: false, error: "Upload PDF before sending email" };
         }
 
-        const verificationUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/v/${certificate.id}`;
+        const baseUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://rycene-portal.vercel.app';
+        const verificationUrl = `${baseUrl}/v/${certificate.id}`;
 
         // 2. Render email template
         const emailHtml = await render(

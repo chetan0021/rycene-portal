@@ -26,7 +26,8 @@ export default function TableActions({ certificate }: { certificate: Certificate
     const [emailMessage, setEmailMessage] = useState<string | null>(null);
     const router = useRouter();
 
-    const verificationUrl = `${typeof window !== "undefined" ? window.location.origin : ""}/v/${certificate.id}`;
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || (typeof window !== "undefined" ? window.location.origin : "");
+    const verificationUrl = `${baseUrl}/v/${certificate.id}`;
 
     function handleGenerateQR() {
         setShowQR(true);
