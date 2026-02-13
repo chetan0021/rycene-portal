@@ -1,5 +1,5 @@
 import TableActions from "./TableActions";
-import { CheckCircle2, Clock, Mail, FileText } from "lucide-react";
+import { CheckCircle2, Clock, Mail } from "lucide-react";
 
 type Certificate = {
     id: string;
