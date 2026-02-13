@@ -1,5 +1,5 @@
 import { getCertificateByUUID } from "@/lib/actions/certificates";
-import { Download, CheckCircle, Award, Calendar, Hash, User, Lock, ExternalLink, Share2, Linkedin } from "lucide-react";
+import { Download, CheckCircle, Award, Calendar, Hash, User, Lock, ExternalLink } from "lucide-react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Image from "next/image";
