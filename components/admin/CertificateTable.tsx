@@ -28,28 +28,28 @@ export default function CertificateTable({ certificates }: { certificates: Certi
                 <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">
                         <tr>
-                            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Serial #
+                            <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Serial
                             </th>
-                            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Student Name
+                            <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Name
                             </th>
-                            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Email
                             </th>
-                            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Course
                             </th>
-                            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Duration
                             </th>
-                            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                PDF Status
+                            <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                PDF
                             </th>
-                            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Email Status
+                            <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Email
                             </th>
-                            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sticky right-0 bg-gray-50 shadow-[-4px_0_6px_-2px_rgba(0,0,0,0.1)]">
                                 Actions
                             </th>
                         </tr>
@@ -57,35 +57,35 @@ export default function CertificateTable({ certificates }: { certificates: Certi
                     <tbody className="bg-white divide-y divide-gray-200">
                         {certificates.map((cert) => (
                             <tr key={cert.id} className="hover:bg-gray-50">
-                                <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+                                <td className="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
                                     {cert.serial_number}
                                 </td>
-                                <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900 font-medium">
+                                <td className="px-3 py-3 whitespace-nowrap text-sm text-gray-900 font-medium">
                                     {cert.student_name}
                                 </td>
-                                <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-600">
+                                <td className="px-3 py-3 whitespace-nowrap text-sm text-gray-600">
                                     {cert.student_email}
                                 </td>
-                                <td className="px-4 py-3 text-sm text-gray-900">
+                                <td className="px-3 py-3 text-sm text-gray-900">
                                     {cert.course_name}
                                 </td>
-                                <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-600">
+                                <td className="px-3 py-3 whitespace-nowrap text-sm text-gray-600">
                                     {cert.duration}
                                 </td>
-                                <td className="px-4 py-3 whitespace-nowrap text-sm">
+                                <td className="px-3 py-3 whitespace-nowrap text-sm">
                                     {cert.pdf_url ? (
                                         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 border border-green-200">
                                             <CheckCircle2 size={14} />
-                                            Uploaded
+                                            Yes
                                         </span>
                                     ) : (
                                         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-700 border border-orange-200">
                                             <Clock size={14} />
-                                            Pending
+                                            No
                                         </span>
                                     )}
                                 </td>
-                                <td className="px-4 py-3 whitespace-nowrap text-sm">
+                                <td className="px-3 py-3 whitespace-nowrap text-sm">
                                     {cert.is_mailed ? (
                                         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800 border border-blue-200">
                                             <Mail size={14} />
@@ -94,11 +94,11 @@ export default function CertificateTable({ certificates }: { certificates: Certi
                                     ) : (
                                         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-700 border border-orange-200">
                                             <Clock size={14} />
-                                            Pending
+                                            No
                                         </span>
                                     )}
                                 </td>
-                                <td className="px-4 py-3 whitespace-nowrap text-sm">
+                                <td className="px-3 py-3 whitespace-nowrap text-sm sticky right-0 bg-white shadow-[-4px_0_6px_-2px_rgba(0,0,0,0.1)]">
                                     <TableActions certificate={cert} />
                                 </td>
                             </tr>
