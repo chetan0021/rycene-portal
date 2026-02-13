@@ -70,11 +70,11 @@ export default async function VerificationPage({ params }: Props) {
                         <h2 className="text-xl font-medium text-gray-300 mb-4 tracking-wide">Rycene VLSI Technologies</h2>
 
                         {/* Premium Badge */}
-                        <div className="flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-yellow-600/20 to-yellow-500/10 border border-yellow-500/50 rounded-full shadow-[0_0_15px_rgba(234,179,8,0.2)] backdrop-blur-sm animate-fade-in-up">
-                            <div className="bg-yellow-500 rounded-full p-0.5">
-                                <CheckCircle className="text-black" size={16} fill="currentColor" />
+                        <div className="flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-yellow-900/40 to-yellow-600/20 border border-yellow-500/50 rounded-full shadow-[0_0_20px_rgba(234,179,8,0.2)] backdrop-blur-md animate-fade-in-up">
+                            <div className="bg-yellow-500 rounded-full p-1 flex items-center justify-center shadow-lg shadow-yellow-500/20">
+                                <CheckCircle className="text-black" size={14} strokeWidth={3} />
                             </div>
-                            <span className="text-yellow-400 text-sm font-bold uppercase tracking-wider text-shadow-sm">
+                            <span className="text-yellow-400 text-sm font-bold uppercase tracking-widest text-shadow-sm">
                                 Verified Credential
                             </span>
                         </div>

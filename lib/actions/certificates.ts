@@ -13,8 +13,16 @@ export async function addStudent(formData: FormData) {
     try {
         const supabase = createServerClient();
 
+        // Generate Serial Number automatically: RYC-YYYYMMDD-XXXX
+        const date = new Date();
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const randomSuffix = Math.random().toString(36).substring(2, 6).toUpperCase();
+        const autoSerialNumber = `RYC-${year}${month}${day}-${randomSuffix}`;
+
         const studentData = {
-            serial_number: formData.get("serial_number") as string,
+            serial_number: (formData.get("serial_number") as string) || autoSerialNumber,
             student_name: formData.get("student_name") as string,
             student_email: formData.get("student_email") as string,
             course_name: formData.get("course_name") as string,
