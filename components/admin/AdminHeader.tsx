@@ -1,45 +1,61 @@
 "use client";
 
-import { signOut } from "@/lib/actions/auth";
-import { LogOut } from "lucide-react";
+import { LogOut, RefreshCw } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
 
 export default function AdminHeader() {
-    const [isSigningOut, setIsSigningOut] = useState(false);
+    const router = useRouter();
+    const [isRefreshing, setIsRefreshing] = useState(false);
 
-    const handleSignOut = async () => {
-        setIsSigningOut(true);
-        await signOut();
-    };
+    async function handleLogout() {
+        await fetch("/api/auth/logout", { method: "POST" });
+        router.push("/login");
+    }
+
+    function handleRefresh() {
+        setIsRefreshing(true);
+        router.refresh();
+        setTimeout(() => setIsRefreshing(false), 1000);
+    }
 
     return (
-        <header className="bg-black sticky top-0 z-50 border-b border-gray-800 shadow-lg">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-                <div className="flex items-center gap-4">
-                    <div className="relative w-32 h-10">
-                        <Image
-                            src="/Logo.png"
-                            alt="Rycene"
-                            fill
-                            className="object-contain object-left brightness-0 invert"
-                            priority
-                        />
+        <div className="bg-white border-b border-gray-200 sticky top-0 z-10 shadow-sm">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex justify-between items-center h-16">
+                    <div className="flex items-center gap-4">
+                        <div className="relative w-32 h-10">
+                            <Image
+                                src="/Logo.png"
+                                alt="Rycene Logo"
+                                fill
+                                className="object-contain"
+                                priority
+                            />
+                        </div>
+                        <h1 className="text-xl font-bold text-gray-900">Admin Dashboard</h1>
                     </div>
-                    <div className="hidden md:block">
-                        <h1 className="text-xl font-bold text-white tracking-tight">Rycene VLSI Technologies</h1>
-                        <p className="text-xs text-gray-400">Certificate Management Portal</p>
+                    <div className="flex items-center gap-3">
+                        <button
+                            onClick={handleRefresh}
+                            disabled={isRefreshing}
+                            className={`flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all ${isRefreshing ? "opacity-50 cursor-not-allowed" : ""}`}
+                            title="Refresh table to see latest status"
+                        >
+                            <RefreshCw size={18} className={isRefreshing ? "animate-spin" : ""} />
+                            <span className="hidden sm:inline">Refresh</span>
+                        </button>
+                        <button
+                            onClick={handleLogout}
+                            className="flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-all"
+                        >
+                            <LogOut size={18} />
+                            <span className="hidden sm:inline">Logout</span>
+                        </button>
                     </div>
                 </div>
-                <button
-                    onClick={handleSignOut}
-                    disabled={isSigningOut}
-                    className="group flex items-center gap-2 px-5 py-2.5 text-sm font-bold text-white bg-gray-900 hover:bg-gray-800 border border-gray-700 rounded-lg transition-all disabled:opacity-50 active:scale-[0.98]"
-                >
-                    <LogOut size={18} className="group-hover:-translate-x-0.5 transition-transform" />
-                    {isSigningOut ? "Signing out..." : "Sign Out"}
-                </button>
             </div>
-        </header>
+        </div>
     );
 }
