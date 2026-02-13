@@ -3,13 +3,9 @@
 import { createServerClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { revalidatePath } from "next/cache";
-import { Resend } from "resend";
 import { render } from "@react-email/components";
 import CertificateEmail from "@/lib/email/templates";
 import { sendGmail } from "@/lib/email/gmail";
-
-// Initialize Resend with API key
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function addStudent(formData: FormData) {
     try {
@@ -129,19 +125,6 @@ export async function sendCertificateEmail(certificateId: string) {
             return { success: false, error: "Upload PDF before sending email" };
         }
 
-        // Get signed URL for the PDF if it's not a public URL
-        let attachmentUrl = certificate.pdf_url;
-        if (!certificate.pdf_url.startsWith("http")) {
-            const { data: signedData } = await supabase
-                .storage
-                .from("certificates")
-                .createSignedUrl(certificate.pdf_url, 3600); // 1 hour expiry
-
-            if (signedData?.signedUrl) {
-                attachmentUrl = signedData.signedUrl;
-            }
-        }
-
         const verificationUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/v/${certificate.id}`;
 
         // 2. Render email template
@@ -155,21 +138,12 @@ export async function sendCertificateEmail(certificateId: string) {
 
         // 3. Send email using Gmail SMTP
         // Note: Gmail blocks data URLs (base64) for security, so we don't attach QR code.
-        // We attach the certificate PDF if available.
-        // For now, we are sending the link to view/download.
-        // If you want to attach the PDF file itself, we need to fetch the file content.
-        // Simplified: Just send the email with the link.
+        // We link to the verification page instead.
 
         await sendGmail({
             to: certificate.student_email,
             subject: `Your Certificate: ${certificate.course_name}`,
             html: emailHtml,
-            // attachments: [
-            //     {
-            //         filename: "Certificate.pdf",
-            //         path: attachmentUrl // Nodemailer supports URL as path
-            //     }
-            // ]
         });
 
         // 4. Update is_mailed status

@@ -43,6 +43,7 @@ export default async function Image({ params }: { params: { id: string } }) {
                     }}
                 >
                     {/* Replaced Text with Image */}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                         src={logoSrc}
                         alt="Rycene Logo"
