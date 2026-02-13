@@ -105,7 +105,6 @@ export async function deleteCertificate(id: string) {
 export async function sendCertificateEmail(certificateId: string) {
     try {
         const supabase = createServerClient();
-        const QRCode = (await import('qrcode')).default;
         const { render } = await import('@react-email/components');
         const { gmailTransporter, FROM_EMAIL } = await import('@/lib/email/gmail');
         const { CertificateEmail } = await import('@/lib/email/templates');
@@ -125,16 +124,6 @@ export async function sendCertificateEmail(certificateId: string) {
         const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
         const verificationUrl = `${baseUrl}/v/${certificate.id}`;
 
-        // Generate QR code as data URL
-        const qrCodeDataUrl = await QRCode.toDataURL(verificationUrl, {
-            width: 400,
-            margin: 2,
-            color: {
-                dark: '#047857',
-                light: '#ffffff',
-            },
-        });
-
         // Render email HTML
         const emailHtml = await render(
             CertificateEmail({
@@ -143,7 +132,6 @@ export async function sendCertificateEmail(certificateId: string) {
                 duration: certificate.duration,
                 serialNumber: certificate.serial_number,
                 verificationUrl,
-                qrCodeDataUrl,
             })
         );
 

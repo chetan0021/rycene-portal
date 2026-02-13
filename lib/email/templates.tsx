@@ -4,7 +4,6 @@ import {
     Body,
     Container,
     Section,
-    Img,
     Heading,
     Text,
     Button,
@@ -17,7 +16,6 @@ interface CertificateEmailProps {
     duration: string;
     serialNumber: string;
     verificationUrl: string;
-    qrCodeDataUrl: string;
 }
 
 export function CertificateEmail({
@@ -26,7 +24,6 @@ export function CertificateEmail({
     duration,
     serialNumber,
     verificationUrl,
-    qrCodeDataUrl,
 }: CertificateEmailProps) {
     return (
         <Html>
@@ -176,23 +173,7 @@ const detailValueMono = {
     margin: '0 0 8px',
 };
 
-const qrSection = {
-    textAlign: 'center' as const,
-    margin: '32px 0',
-};
 
-const qrLabel = {
-    fontSize: '14px',
-    fontWeight: '600',
-    color: '#047857',
-    margin: '0 0 16px',
-};
-
-const qrCode = {
-    margin: '0 auto',
-    border: '4px solid #10b981',
-    borderRadius: '12px',
-};
 
 const buttonSection = {
     textAlign: 'center' as const,
